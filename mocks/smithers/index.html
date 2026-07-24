@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAUNCHPAD USA — Made-in-USA to Amazon, in 30 days</title>
+<style>
+  :root{
+    --ink:#0d1b2a; --paper:#f7f3e9; --red:#c8322b; --blue:#1c3f6e;
+    --gold:#d99a2b; --line:#dcd3bf; --mute:#6b6455;
+    --shadow:0 18px 50px -22px rgba(13,27,42,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, #fbe9d0 0%, transparent 60%),
+      radial-gradient(900px 500px at -5% 110%, #e6eef6 0%, transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:28px;
+  }
+  .device{
+    width:390px;background:var(--paper);border-radius:38px;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+    overflow:hidden;position:relative;
+  }
+  .device::before{
+    content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    width:120px;height:26px;background:var(--ink);border-radius:0 0 16px 16px;z-index:9;
+  }
+  /* header / brand */
+  .top{
+    background:linear-gradient(160deg,var(--blue),#122a4a);
+    color:#fff;padding:46px 22px 20px;position:relative;
+  }
+  .stripes{position:absolute;inset:0;opacity:.10;
+    background:repeating-linear-gradient(90deg,#fff 0 14px,transparent 14px 28px)}
+  .brand{display:flex;align-items:center;gap:10px;position:relative}
+  .star{width:30px;height:30px;flex:0 0 auto;
+    background:var(--gold);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
+  .brand h1{font-size:21px;letter-spacing:2px;font-weight:800}
+  .brand h1 span{color:var(--gold)}
+  .tag{position:relative;margin-top:14px;font-size:12px;letter-spacing:1px;
+    text-transform:uppercase;color:#bcd0ea}
+  .pitch{position:relative;margin-top:8px;font-size:23px;line-height:1.22;font-weight:800}
+  .pitch em{color:var(--gold);font-style:normal}
+
+  /* body */
+  .screen{padding:20px 20px 24px}
+  .field-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--mute);margin-bottom:7px;font-weight:700}
+  .input{
+    width:100%;border:1.5px solid var(--line);background:#fff;border-radius:14px;
+    padding:13px 14px;font-size:15px;color:var(--ink);outline:none;
+  }
+  .input:focus{border-color:var(--blue)}
+  .cta{
+    margin-top:14px;width:100%;border:none;cursor:pointer;
+    background:linear-gradient(180deg,var(--red),#a5251f);color:#fff;
+    padding:15px;border-radius:14px;font-size:15px;font-weight:800;
+    letter-spacing:.6px;box-shadow:0 10px 22px -10px rgba(200,50,43,.8);
+    transition:transform .12s ease, filter .12s ease;
+  }
+  .cta:active{transform:translateY(2px)}
+  .cta:hover{filter:brightness(1.05)}
+
+  .plan{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px}
+  .plan h2{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);
+    margin-bottom:14px;display:flex;justify-content:space-between;align-items:baseline}
+  .plan h2 b{color:var(--gold);font-size:11px}
+  .week{
+    display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;
+    padding:11px 0;border-bottom:1px solid var(--line);
+    opacity:0;transform:translateY(8px);
+    animation:pop .5s forwards;
+  }
+  @keyframes pop{to{opacity:1;transform:none}}
+  .chip{
+    background:var(--blue);color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;
+    border-radius:9px;text-align:center;padding:7px 0;line-height:1.15;
+  }
+  .chip small{display:block;font-size:8px;opacity:.7;font-weight:600}
+  .week .txt b{font-size:13.5px;display:block;margin-bottom:2px}
+  .week .txt p{font-size:12px;color:var(--mute);line-height:1.35}
+  .badges{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+  .badge{font-size:9.5px;font-weight:700;letter-spacing:.4px;padding:5px 9px;border-radius:20px;
+    background:#fff;border:1px solid var(--line);color:var(--blue)}
+  .badge.reg{color:var(--red);border-color:#f0c9c6;background:#fdecea}
+  .foot{margin-top:16px;text-align:center;font-size:10px;color:var(--mute);letter-spacing:.5px}
+</style>
+</head>
+<body>
+  <div class="device">
+    <div class="top">
+      <div class="stripes"></div>
+      <div class="brand">
+        <div class="star"></div>
+        <h1>LAUNCH<span>PAD</span> USA</h1>
+      </div>
+      <div class="tag">Made in the USA → Sold on Amazon</div>
+      <div class="pitch">Type your product. Get a <em>compliance-checked</em>, 30-day Amazon launch plan.</div>
+    </div>
+
+    <div class="screen">
+      <div class="field-label">What are you selling?</div>
+      <input id="prod" class="input" value="Stainless steel water bottle" />
+      <button class="cta" id="go">⚡ Build my 30-day launch plan</button>
+
+      <div class="plan" id="plan" style="display:none">
+        <h2>Your 30-Day Plan <b id="pname"></b></h2>
+        <div id="weeks"></div>
+        <div class="foot">FTC "Made in USA" ✓ · FDA/CPSC flags ✓ · Amazon Brand Registry ✓</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const weeks = [
+    { n:"WK", d:"1", t:"Lock compliance & sourcing proof",
+      p:"Document all-or-virtually-all US content for the FTC Made-in-USA claim; collect supplier invoices.",
+      b:[["reg","FTC Made-in-USA"],["","Supplier docs"]] },
+    { n:"WK", d:"2", t:"Product safety + listing prep",
+      p:"Check CPSC/FDA category rules, order UPC/GTIN, shoot hero photos, draft SEO title & bullets.",
+      b:[["reg","CPSC / FDA check"],["","UPC + photos"]] },
+    { n:"WK", d:"3", t:"Amazon Seller & Brand Registry",
+      p:"Open Professional Seller account, file trademark for Brand Registry, create the FBA listing.",
+      b:[["","Brand Registry"],["","FBA setup"]] },
+    { n:"WK", d:"4", t:"Ship, launch & advertise",
+      p:"Send inventory to FBA, go live, run Sponsored Products at $20/day, request first reviews.",
+      b:[["reg","Ad claims review"],["","PPC live"]] },
+  ];
+
+  document.getElementById("go").addEventListener("click", () => {
+    const name = document.getElementById("prod").value.trim() || "your product";
+    document.getElementById("pname").textContent = "· " + name;
+    const wrap = document.getElementById("weeks");
+    wrap.innerHTML = "";
+    weeks.forEach((w,i) => {
+      const el = document.createElement("div");
+      el.className = "week";
+      el.style.animationDelay = (i*0.09)+"s";
+      el.innerHTML =
+        '<div class="chip">'+w.n+'<small>WEEK</small>'+w.d+'</div>'+
+        '<div class="txt"><b>'+w.t+'</b><p>'+w.p+'</p>'+
+        '<div class="badges">'+w.b.map(x=>'<span class="badge '+x[0]+'">'+x[1]+'</span>').join('')+'</div></div>';
+      wrap.appendChild(el);
+    });
+    document.getElementById("plan").style.display = "block";
+  });
+  document.getElementById("go").click();
+</script>
+</body>
+</html>
